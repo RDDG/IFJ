@@ -1,0 +1,33 @@
+prace s gitem
+
+1, naklonování adresáře na lokální stroj
+    git clone [hmtl adresa]
+
+2, vypis existujících větví
+    git branch -a -v
+
+3, přepnutí /připojeni/ do větve do které chci
+    git checkout -b pokus origin/grafika
+
+aktuálně jsi přepnutý do větve pokus, aby jsi neztratil hlavu provedeš ještě jeden checkout
+    git checkout
+
+když uděláš ls, uvidíš obsah větvě, po přepnutí na jinou větev bude obsah jinej!
+
+4, proveď úpravy co potřebuješ
+
+5, nahrani upraveného souboru do repozitáře
+    git add soubor
+    git commit   (!vypln co nahráváš za soubor a co jsi změnil/upravil)
+
+6, spoj větve (uprava se musí projevit v původni větvy (grafika) né ve tvé lokálnáí (pokus) ) - nutné být ve větvy grafika (cílová)
+    git checkout grafika
+    git merge grafika pokus
+
+7, přepni se do vetve, kterou jsi obohatil o svoje soubory (grafika)
+    checkout grafika
+
+8, nahrej soubory na server, pokud jsi provedl úpravy jen ve své větvi, tak jen větev, pokud jsi upravoval víc věcí tak --all (upozorni ostatní, aby si stáhli aktuální verzi repozitáře)
+    git push origin grafika  /aktualizuje jen grafika
+    git push --all /aktualizuje všechno
+
