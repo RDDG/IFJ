@@ -156,7 +156,7 @@ void getToken(){
         else if(c == ';'){
           type = t_semicolon;
         }
-        else if((isalnum(c)) || c == '_' || c == '$'){ // identifikator
+        else if((isalpha(c)) || c == '_' || c == '$'){ // identifikator
           type = t_simple_id;
         }
         else{
@@ -240,5 +240,3 @@ void getToken(){
   }
 }
 
-
-// pak se zepta, zda je keyWord až potkám nějaký identifikátor
