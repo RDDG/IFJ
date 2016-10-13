@@ -1,4 +1,4 @@
-prace s gitem
+Prace s gitem
 
 1, naklonování adresáře na lokální stroj
     git clone [hmtl adresa]
