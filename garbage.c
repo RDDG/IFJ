@@ -3,15 +3,16 @@
 
 struct GC gc;
 
+//alokace paměti
 void* myMalloc(unsigned long velikost){
-    if(gc.posledni->polozka!=NULL || gc.prvni!=gc.posledni){
+    if(gc.posledni->polozka!=NULL || gc.prvni!=gc.posledni){  //pokud polozka kam chci nahrát pamět je obsazena nebo je v seznamu jen jedna polozka, zajistí místo pro novou
         gc.posledni->dalsi=malloc(sizeof(struct GC_obsah));
         gc.posledni=gc.posledni->dalsi;
     }
-    gc.posledni->polozka=malloc(velikost);
+    gc.posledni->polozka=malloc(velikost);      //naalokuje potřebnou velikost dle vstupu
     gc.posledni->dalsi=NULL;
     
-    return gc.posledni->polozka;
+    return gc.posledni->polozka;                //vrátí příslušný ukazatel
 }
 
 void init(){
@@ -27,11 +28,11 @@ void freeAll(){
     akt=gc.prvni;
     while(akt!=NULL){
         if(akt->polozka!=NULL){
-            free(akt->polozka);
+            free(akt->polozka);  //maže položku
         }
         tmp=akt;
         akt=akt->dalsi;
-        free(tmp);
+        free(tmp);      //maže strukturu
     }
     
 }
