@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "garbage"
 
 int main (int argc, char *argv[])
 {
@@ -8,7 +9,7 @@ int main (int argc, char *argv[])
         printf("Chyba neni zadan vstupni soubor\n");
         return 99;
     }
-    
+    init();	//inicializace garbage collectoru 	    
     // Otevreni souboru ze vstupu a predani rizeni parseru, ktery vola funkce z lexikalu
     FILE * f;
     f=fopen(argv[1], "r");
