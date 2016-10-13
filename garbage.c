@@ -1,17 +1,17 @@
-#include "garbade.h"
+#include "garbage.h"
 
 
 struct GC gc;
 
 void* myMalloc(unsigned long velikost){
-    if(gc.posledni->obsah!=NULL){
-        gc.posledni->dalsi=malloc(sizeof(struct GC_obsah);
-        gc.posledn=gc.posledn->dalsi;
+    if(gc.posledni->polozka!=NULL){
+        gc.posledni->dalsi=malloc(sizeof(struct GC_obsah));
+        gc.posledni=gc.posledni->dalsi;
     }
     gc.posledni->polozka=malloc(velikost);
     gc.posledni->dalsi=NULL;
     
-    return gc.posledni->obsah;
+    return gc.posledni->polozka;
 }
 
 void init(){
@@ -22,14 +22,18 @@ void init(){
 
 void freeAll(){
     struct GC_obsah *tmp;
-  
-    while(gc.prvni!=NULL){
-        tmp=gc.prvni;
-        gc.prvni=gc.prvni->dalsi;
+    struct GC_obsah *akt;
+    
+    akt=gc.prvni;
+    while(akt!=NULL){
+        if(akt->polozka!=NULL){
+            free(akt->polozka);
+        }
+        tmp=akt;
+        akt=akt->dalsi;
         free(tmp);
-        
-      
     }
-    free(gc.prvni);
+    gc.prvni=NULL;
+    
 }
 
