@@ -2,7 +2,7 @@
 /*													Projekt do IFJ a IAL														 	*/
 /*						Implementace interpretu imperativního jazyka IFJ16							*/
 /*													Lexikalni analyzator															*/
-/*																2016/2017																		*/
+/* 																2016/2017																		*/
 /*																xcisar07																		*/
 /******************************************************************************/
 
