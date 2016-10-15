@@ -3,8 +3,8 @@ BIN=project
 CC=gcc
 RM=rm -f
 
-ALL: gcmain.o garbage.o
-	$(CC) $(CFLAGS) -o $(BIN) gcmain.o garbage.o
+ALL: main.o garbage.o scanner.o
+	$(CC) $(CFLAGS) -o $(BIN) main.o garbage.o scanner.o
 
 clean:
 	$(RM) *.o $(BIN)

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "garbage"
+#include "garbage.h"
 
 int main (int argc, char *argv[])
 {
