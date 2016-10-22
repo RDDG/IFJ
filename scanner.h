@@ -23,6 +23,7 @@ typedef enum {
   t_simple_id,     // jednoduchy identifikator
   t_qualified_id,  // plne kvalifikoany identifikator
   t_string,        // retezcovy literal
+  t_string_m,
   t_comment,       // komentar // a /* */
   t_left_bracket,  // leva zavorka (
   t_right_bracket, // prava zavorka )
