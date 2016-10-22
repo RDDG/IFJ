@@ -1,3 +1,9 @@
 #include "parser.h"
 
-//tady snad neco vymyslim
+void parseStart(){
+    Token *token;
+    
+    token=getToken();
+    
+    
+}
