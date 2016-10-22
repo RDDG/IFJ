@@ -1,4 +1,4 @@
-;/******************************************************************************/
+/******************************************************************************/
 /*													Projekt do IFJ a IAL														 	*/
 /*						Implementace interpretu imperativního jazyka IFJ16							*/
 /*													Lexikalni analyzator															*/
@@ -81,18 +81,18 @@ int checkKeyWord(char *word){
 }
 
 /*                       Funkce preskakuje komentare                          */
-int ignoreComment(){
+/*int ignoreComment(){
 
-}
+}*/
 /*                         Funkce na ziskami tokenu                           */
-void getToken(){
+Token getToken(){
   char c;
   int type = t_start;
   cleanToken(&token);
   c=fgetc(file);
   if(c == EOF){
-    token.type = t_eof;
-    return;
+    type = t_eof;
+    changeTypeOfToken(&token, type);
   }
 
   while(1) {
@@ -112,7 +112,7 @@ void getToken(){
           }
         }
         else if(c == '"'){           // vyhodnotim jako retezcovy literal
-          type = t_string;
+          type = t_string_m;
         }
         else if(c == '+'){
           type = t_plus;
@@ -196,7 +196,7 @@ void getToken(){
           addCharToToken(&token, c);
           changeTypeOfToken(&token, type);
         }
-        if(c == '.'){
+        else if(c == '.'){
           type = t_double_m;
           addCharToToken(&token, c);
           changeTypeOfToken(&token, type);
@@ -225,18 +225,126 @@ void getToken(){
       case t_double: {
         if(isdigit(c)){
           type = t_double;
-          vaddCharToToken(&token, c);
+          addCharToToken(&token, c);
           changeTypeOfToken(&token, type);
         }
         else{
           ungetc(c, file);
           type = t_finish;
         }
+        break;
 
-        
       }
 
+      case t_simple_id: {
+        if((isalnum(c) || c == '_' || c == '$')){
+          type = t_simple_id;
+          addCharToToken(&token, c);
+          changeTypeOfToken(&token, type);
+        }
+        else if(c == '.'){
+          type = t_qualified_id;
+          addCharToToken(&token, c);
+          changeTypeOfToken(&token, type);
+        }
+        else{
+          ungetc(c, file);
+          type = checkKeyWord(token.string);
+          changeTypeOfToken(&token, type);
+          type = t_finish;
+        }
+        break;
+      }
+
+      case t_qualified_id: {
+        if((isalnum(c) || c == '_' || c == '$')){
+          type = t_qualified_id;
+          addCharToToken(&token, c);
+          changeTypeOfToken(&token, type);
+        }
+        else{
+          ungetc(c, file);
+          type = t_finish;
+        }
+        break;
+      }
+
+      case t_string_m: {
+        if(c > 31 && c != 34){
+          type = t_string_m;
+          addCharToToken(&token, c);
+          changeTypeOfToken(&token, type);
+        }
+        else{
+          type = t_lex_error;
+        }
+      }
+
+      case t_string: {
+        if(c == 34){
+          type = t_string;
+          addCharToToken(&token, c);
+          changeTypeOfToken(&token, type);
+        }
+        else{
+          type = t_lex_error;
+        }
+      }
+
+      case t_smaller: {
+        if(c == '='){
+          type = t_eq_smaller;
+          addCharToToken(&token, c);
+          changeTypeOfToken(&token, type);
+        }
+        else{
+          ungetc(c, file);
+          type = t_smaller;
+          changeTypeOfToken(&token, type);
+          type = t_finish;
+        }
+      }
+
+      case t_eq_smaller: {
+        type = t_finish;
+        break;
+      }
+
+      case t_bigger: {
+        if(c == '='){
+          type = t_eq_bigger;
+          addCharToToken(&token, c);
+          changeTypeOfToken(&token, type);
+        }
+        else{
+          ungetc(c, file);
+          type = t_bigger;
+          changeTypeOfToken(&token, type);
+          type = t_finish;
+        }
+      }
+
+      case t_eq_bigger: {
+        type = t_finish;
+        break;
+      }
+
+      case t_exclamation: {
+        if(c == '='){
+          type = t_not_equals;
+          addCharToToken(&token, c);
+          changeTypeOfToken(&token, type);
+        }
+        else{
+          type = t_lex_error;
+        }
+      }
+
+      case t_not_equals: {
+        type = t_finish;
+        break;
+      }
+    
     }
   }
 }
-
