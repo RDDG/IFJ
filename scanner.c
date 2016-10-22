@@ -1,4 +1,4 @@
-;/******************************************************************************/
+/******************************************************************************/
 /*													Projekt do IFJ a IAL														 	*/
 /*						Implementace interpretu imperativního jazyka IFJ16							*/
 /*													Lexikalni analyzator															*/
@@ -85,7 +85,7 @@ int ignoreComment(){
 
 }
 /*                         Funkce na ziskami tokenu                           */
-void getToken(){
+Token getToken(){
   char c;
   int type = t_start;
   cleanToken(&token);
