@@ -1,18 +1,22 @@
 #include "parser.h"
 
 
-
-void parserID(){
+<N> => class <id> { <class_body> } <class_def>
+int LLclass(){
+    
+    Token * token;
+    token=getToken()
+    if(token->type == )
 }
 
 void parseStart(){
     int error = 0;
     
-    error=parserID();
+    if(LLparserID(), LL
     
     Token *token;
     
-    token=getToken();
+    
     
     
 }

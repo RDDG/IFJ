@@ -1,6 +1,6 @@
-<N> => class <id> { <class_body> } <class_id>
-<class_id> => epsilon
-<class_id> => class <id> { <class_body> } <class_id>
+<N> => class <id> { <class_body> } <class_def>
+<class_def> => epsilon
+<class_def> => class <id> { <class_body> } <class_def>
 
 <class_body> => static <type> <id> ; <class_body>           //proměnna v class
 
@@ -9,7 +9,6 @@
 <Farg_list> => , <type> <id> <Farg_list>
 <Farg_list> => Epsilon
 <arg> => Epsilon
-
 
 <class_body> => Epsilon         //prazna class
 
