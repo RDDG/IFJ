@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+Token getToken();
 /*                          Stavy konecneho automatu                          */
 typedef enum {
   t_start,         // pocatecni stav
@@ -43,10 +44,10 @@ typedef enum {
   t_colon,         // dvojtecka :
   t_comma,         // carka ,
   t_semicolon,     // strednik ;
+  t_finish,         // konecny stav
   t_class,          // klikčové slovo t_class
   t_LSlozena,       // {
-  t_PSlozena,       // }
-  t_finish         // konecny stav
+  t_PSlozena       // }
 } tType;
 
 typedef struct {

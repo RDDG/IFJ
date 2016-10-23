@@ -11,7 +11,6 @@
 #include <string.h>
 #include <ctype.h>
 #include "scanner.h"
-#include "garbage.h"
 
 Token token;
 FILE *file;
@@ -30,10 +29,9 @@ char *keyWords[17] = {"boolean", "break", "class", "continue", "do", "double",
 /******************************************************************************/
 /*                           Inicializovani tokenu                            */
 int initToken(Token *token){
-  /*if((token->string = (char*) malloc(8)) == NULL){
+  if((token->string = (char*) malloc(8)) == NULL){
     return 99;
-  }*/
-  token->string = (char*) myMalloc(8);
+  }
   token->type = t_start;
   token->lenght = 0;
   token->alocated = 8;
@@ -41,7 +39,7 @@ int initToken(Token *token){
   return 0;
 }
 
-/*                             Uvolneni tokenu              pa                  */
+/*                             Uvolneni tokenu                                */
 void freeToken(Token *token){
   free(token->string);
 }
@@ -84,7 +82,6 @@ int checkKeyWord(char *word){
 
 /*                       Funkce preskakuje komentare                          */
 /*int ignoreComment(){
-
 }*/
 /*                         Funkce na ziskami tokenu                           */
 Token getToken(){

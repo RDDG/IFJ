@@ -1,6 +1,5 @@
 #include "parser.h"
 
-
 //<N> => class <id> { <class_body> } <class_def>
 int LLclass(){
     
@@ -50,8 +49,5 @@ int parseStart(){
     }
     
     return error;
-    
-    
-    
     
 }
