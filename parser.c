@@ -4,20 +4,20 @@
 int LLclass(){
     
     int error =1;
-    Token * token;
+    Token token;
     
     token=getToken();
-    if(token->type != t_class){
+    if(token.type != t_class){
         return error;
     }
     
     token=getToken();
-    if(token->type != t_simple_id){
+    if(token.type != t_simple_id){
         return error;
     }
     
     token=getToken();
-    if(token->type != t_LSlozena){
+    if(token.type != t_LSlozena){
         return error;
     }
     
@@ -27,7 +27,7 @@ int LLclass(){
     }
     
     token=getToken();
-    if (token->type != t_PSlozena){
+    if (token.type != t_PSlozena){
         return error;
     }
     
