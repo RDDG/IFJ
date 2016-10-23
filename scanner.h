@@ -43,6 +43,9 @@ typedef enum {
   t_colon,         // dvojtecka :
   t_comma,         // carka ,
   t_semicolon,     // strednik ;
+  t_class,          // klikčové slovo t_class
+  t_LSlozena,       // {
+  t_PSlozena,       // }
   t_finish         // konecny stav
 } tType;
 
