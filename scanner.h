@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-Token getToken();
+
 /*                          Stavy konecneho automatu                          */
 typedef enum {
   t_start,         // pocatecni stav
@@ -56,3 +56,5 @@ typedef struct {
   int alocated;
   int lenght;
 } Token;
+
+Token getToken();
