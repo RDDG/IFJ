@@ -1,4 +1,7 @@
-<N> => class <id> { <class_body> }
+<N> => class <id> { <class_body> } <class_id>
+<class_id> => epsilon
+<class_id> => class <id> { <class_body> } <class_id>
+
 <class_body> => static <type> <id> ; <class_body>           //proměnna v class
 
 <class_body> => static <type> <id> ( <arg> ) { <function_body> }
