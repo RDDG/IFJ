@@ -1,7 +1,28 @@
 #include "parser.h"
 
-//<N> => class <id> { <class_body> } <class_def>
-int LLclass(){
+
+// <class_body> => static <type> <id> ; <class_body>
+// <class_body> => static <type> <id> ( <arg> ) { <function_body> }
+// <class_body> => Epsilon
+int LLClassBody(){
+    int error=1;
+    
+    
+    
+    return error;
+}
+
+
+// <class_def> => epsilon
+// <class_def> => class <id> { <class_body> } <class_def>
+int LLClassDef(){
+    int error=1;
+    
+    return error;
+}
+
+// <N> => class <id> { <class_body> } <class_def>
+int LLClass(){
     
     int error =1;
     Token token;
@@ -31,7 +52,7 @@ int LLclass(){
         return error;
     }
     
-    error=LLclassDef();
+    error=LLClassDef();
     if( error == 1){
         return error;
     }
@@ -43,7 +64,7 @@ int LLclass(){
 int parseStart(){
     int error = 1;
     
-    error=LLclass();
+    error=LLClass();
     if (error == 0){
         //spustit interpret s paskou na vstuput
     }

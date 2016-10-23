@@ -3,8 +3,8 @@
 <class_def> => class <id> { <class_body> } <class_def>
 
 <class_body> => static <type> <id> ; <class_body>           //proměnna v class
-
 <class_body> => static <type> <id> ( <arg> ) { <function_body> }
+
 <arg> => <type> <id> <Farg_list>
 <Farg_list> => , <type> <id> <Farg_list>
 <Farg_list> => Epsilon
