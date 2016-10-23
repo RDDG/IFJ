@@ -43,6 +43,9 @@ typedef enum {
   t_comma,         // carka ,
   t_semicolon,     // strednik ;
   t_finish         // konecny stav
+  t_class          // klikčové slovo t_class
+  t_LSlozena       // {
+  t_PSlozena       // }
 } tType;
 
 typedef struct {
