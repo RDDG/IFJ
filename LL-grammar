@@ -1,7 +1,11 @@
 <N> => class <id> { <class_body> }
 <class_body> => static <type> <id> ; <class_body>           //proměnna v class
 
-<class_body> => static <type> <id> ( <arg> { <function_body> }   // funkce v class
+<class_body> => static <type> <id> ( <arg> ) { <function_body> }
+<arg> => <type> <id> <Farg_list>
+<Farg_list> => , <type> <id> <Farg_list>
+<Farg_list> => Epsilon
+<arg> => Epsilon
 
 
 <class_body> => Epsilon         //prazna class
@@ -10,18 +14,29 @@
 <arg> => <expressin><arg_item>
 <arg> => <ark_item>
 <arg_item> => Epsilon )
-?? <arg> => Epsilon )
 <arg_item> => , <expressin><arg_item>
 
 
 <function_body> =>Epsilon
 <function_body> => <type> <id> ; <function_body>     // int i;
-<function_body> => <id> = <expressin>; <function_body>    // i=3;
-<function_body> => <id> = <function> ; <function_body>
-<function> => ifj16 . <id> ( <arg> ) ; <function_body>   //ifj.print("neco");
+<function_body> => <assign>; <function_body>
+<assign> => <id> = <expressin>
+<assign> => <id> = <function> ; <function_body>
+<function> => ifj16 . <id> ( <arg>  ; <function_body>   //ifj.print("neco");
 <function_body> => <id> = <expressin>; <function_body>  
-<function_body> => if ( <expressin>)  { <function_body> } else { <function_body> } <function_body>
+
+<function_body> => if ( <expressin>)  { <function_body> } <else> <function_body>
+<else> => else { <function_body> }
+<else> => epsilon
+
+
 <function_body> => while ( <expressin> ) { <function_body> } <function_body>
 <function_body> => do { <function_body> } while { <expressin> } ; <function_body>
-<function_body> => for ( <expressin> ; <expressin> ; <expressin ) {<function_body>} <function_body>
-<function> => <id> . <id> ( <arg>  ; <function_body> 
+<function_body> => for ( <assign> ; <expressin> ; <expressin ) {<function_body>} <function_body>
+
+<function> => <id> . <id> ( <arg_id> ) ; <function_body>
+<arg_id> => Epsilon
+<arg_id> => <id> <arg_list>
+<arg_list> => , <id> <arg_list>
+<arg_list> => Epsilon
+
